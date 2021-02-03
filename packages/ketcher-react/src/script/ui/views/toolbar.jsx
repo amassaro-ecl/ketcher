@@ -220,10 +220,10 @@ function initToolbar() {
     })
 
   return [
-    { id: 'mainmenu', menu: mainmenu },
-    { id: 'toolbox', menu: toolboxItems },
-    { id: 'template', menu: template },
-    { id: 'elements', menu: elements }
+    { id: 'mainmenu', className: 'toolbar-top', menu: mainmenu },
+    { id: 'toolbox', className: 'toolbar-left', menu: toolboxItems },
+    { id: 'template', className: 'toolbar-bottom', menu: template },
+    { id: 'elements', className: 'toolbar-right', menu: elements }
   ]
 }
 

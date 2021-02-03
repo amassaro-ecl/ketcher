@@ -150,7 +150,7 @@ function ActionMenu({ name, menu, className, role, ...props }) {
         <li
           key={item.id || item}
           id={item.id || item}
-          className={clsx(props.status[item], {
+          className={clsx(item.className, props.status[item], {
             opened: item.id === props.opened
           })}
           onClick={ev => openHandle(ev, props.onOpen)}>

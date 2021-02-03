@@ -48,7 +48,7 @@ function AppView(props) {
   return (
     <React.Fragment>
       <AppHidden />
-      <Editor id="canvas" />
+      <Editor className="canvas" />
       <Toolbar {...props} />
       <AppClipArea />
       <AppModal />

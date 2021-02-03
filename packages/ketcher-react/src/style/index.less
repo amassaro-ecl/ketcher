@@ -1,6 +1,8 @@
 @import (less) 'normalize.css';
 
 @import 'variables';
+@import 'canvas';
+@import 'toolbar';
 @import 'mixins';
 @import 'dialogs';
 
@@ -11,6 +13,12 @@ menu {
   list-style: none;
   margin: 0;
   padding: 0;
+}
+
+.ketcher.root {
+  height: 100%;
+  width: 100%;
+  position: relative;
 }
 
 /////////////////////
@@ -24,45 +32,15 @@ body {
   width: 100%;
 }
 
-body,
-main[role='application'] {
+body {
   height: 100%;
   position: relative;
   font: @base-size FreeSans, Arimo, 'Droid Sans', Helvetica, 'Helvetica Neue',
     Arial, sans-serif;
   background-color: white;
   color: @main-color;
-
   min-width: 640px;
   min-height: 400px;
-}
-
-#canvas {
-  .canvas;
-  user-select: none;
-
-  .measure-log {
-    &:extend(.-Measure);
-    &.visible {
-      opacity: 1;
-    }
-  }
-}
-
-#mainmenu {
-  .toolbar(top);
-}
-#elements {
-  .toolbar(right);
-}
-#template {
-  .toolbar(bottom);
-  & > menu {
-    overflow: hidden; // #300 quick fix,
-  } // no menu expansion
-}
-#toolbox {
-  .toolbar(left);
 }
 
 #meta {
@@ -74,32 +52,6 @@ main[role='application'] {
   position: absolute;
   right: 0;
   overflow-y: hidden;
-}
-
-[role='toolbar'] {
-  user-select: none;
-  menu {
-    .remove-inline-spacing;
-  }
-  li {
-    display: inline-block;
-    vertical-align: top;
-    & > svg {
-      fill: @main-color;
-      display: none; // dropdown
-    }
-  }
-  button {
-    .toolbutton;
-  }
-  .selected button {
-    .highlight-invert;
-  }
-  kbd {
-    display: none;
-    font: 0.8em monospace;
-    color: @border-color;
-  }
 }
 
 .cliparea {
@@ -264,21 +216,6 @@ select {
   form {
     font-size: @base-size;
   }
-  #canvas {
-    .canvas-size(small);
-  }
-  #mainmenu,
-  #template {
-    .toolbar-size(horizontal, small);
-  }
-  #elements,
-  #toolbox {
-    .toolbar-size(vertical, small);
-  }
-
-  [role='toolbar'] button {
-    .toolbutton-size(small);
-  }
 
   #select,
   #reaction {
@@ -300,11 +237,6 @@ select {
   #about {
     display: none;
   }
-  #mainmenu {
-    .set-size(small);
-    left: @toolbar-gap;
-    right: @toolbar-gap;
-  }
 }
 
 #template-common {
@@ -317,7 +249,7 @@ select {
 
 .warning {
   color: @error-color;
-  &:before {
+  &::before {
     content: '⚠ ';
   }
 }

@@ -3,13 +3,15 @@
 @import (reference) 'component';
 
 .ket-overlay {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: fixed;
   left: 0;
   top: 0;
   bottom: 0;
   right: 0;
   z-index: 40;
-  text-align: center;
 
   background-image: data-uri('overlay.svg');
   .background-opacity(#777, 0.2);
